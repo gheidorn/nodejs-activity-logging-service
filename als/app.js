@@ -42,6 +42,18 @@ app.post('/als/activity', function(req, res) {
 				//console.log('wrote to log');
 			}
 		});
+	} else if (req.body.activity.type === 'impression') {
+		// write impression activity to file
+		var activity = JSON.stringify(req.body.activity) + "\n";
+		var date = new Date();
+		fs.appendFile('impression.activity.json', "[" + date +  "] " + activity, function(err){
+			if(err) {
+				console.log('error attempting to write to impression.activity.json');
+				console.log(err);
+			} else {
+				//console.log('wrote to log');
+			}
+		});
 	} else {
 		console.log('type not valid or undefined');
 	}

@@ -1,6 +1,11 @@
 var SERVICENAME = "Activity Logging Service";
-var express = require('express'), fs = require('fs');
+var express = require('express'), fs = require('fs'), als = require('./logging/als');
 var app = require('express').createServer();
+
+console.log(als);
+als.initActivityLogs();
+
+
 
 app.configure(function() {
     app.use(express.logger('dev'));
